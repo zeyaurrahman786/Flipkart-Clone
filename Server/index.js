@@ -7,10 +7,11 @@ let loginRoutes = require("./routes/login");
 app.use(express.urlencoded({ extended: true }));
 let userRoutes = require("./routes/user");
 
+
 mongoose
-  .connect("mongodb://127.0.0.1:27017/flipkart")
+  .connect("mongodb://127.0.0.1:27017/zomato")
   .then(() => {
-    console.log("Database Coneected");
+    console.log("Database connected successfully");
   })
   .catch((err) => {
     console.log(err);
@@ -19,8 +20,8 @@ mongoose
 app.use("/api", userRoutes);
 app.use("/api", loginRoutes);
 
-// localhost:5000/api/users
+//    localhost:4000/api/users
 
-app.listen(5000, () => {
-  console.log("Server running on port 5000");
+app.listen(4000, () => {
+  console.log("server running on port 4000");
 });

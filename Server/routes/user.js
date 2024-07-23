@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const User = require("../models/user.js");
+const User = require("../model/user");
 let bcrypt = require("bcrypt");
 
 
@@ -9,17 +9,18 @@ router.post("/users", async (req, res) => {
   console.log(req.body, "Zeyaur");
   const Email = await User.findOne({ email: user.email });
   if (Email) {
-    res.send("User is already registered in our Database");
+    res.send("User is already registered in  our Database");
   } else {
     // console.log(req.body.passWord);
     user.passWord = await bcrypt.hash(req.body.passWord, 10);
     const dbUser = new User({
       name: user.name,
-      email: user.email,
+      email: user.email.toLowerCase(),
       passWord: user.passWord,
     });
     await dbUser.save();
-    res.send({ messge: "Done" });
+    res.send({ message: "Done" });
   }
 });
+
 module.exports = router;
