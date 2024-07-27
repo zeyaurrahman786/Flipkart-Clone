@@ -4,12 +4,13 @@ let app = express();
 
 app.use(express.json());
 let loginRoutes = require("./routes/login");
+let productRoutes = require("./routes/product");
 app.use(express.urlencoded({ extended: true }));
 let userRoutes = require("./routes/user");
 
 
 mongoose
-  .connect("mongodb://127.0.0.1:27017/zomato")
+  .connect("mongodb://127.0.0.1:27017/flipkart")
   .then(() => {
     console.log("Database connected successfully");
   })
@@ -19,6 +20,7 @@ mongoose
 
 app.use("/api", userRoutes);
 app.use("/api", loginRoutes);
+app.use("/api", productRoutes);
 
 //    localhost:4000/api/users
 
