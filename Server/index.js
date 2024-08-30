@@ -1,6 +1,8 @@
 let mongoose = require("mongoose");
 let express = require("express");
+let cors=  require('cors')
 let app = express();
+app.use(cors())
 
 app.use(express.json());
 let loginRoutes = require("./routes/login");
@@ -9,8 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 let userRoutes = require("./routes/user");
 
 
-mongoose
-  .connect("mongodb://127.0.0.1:27017/flipkart")
+mongoose.connect("mongodb://127.0.0.1:27017/flipkart")
   .then(() => {
     console.log("Database connected successfully");
   })

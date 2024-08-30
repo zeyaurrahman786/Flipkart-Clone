@@ -6,6 +6,7 @@ import "bootstrap/dist/js/bootstrap.bundle.min";
 import { Route, Routes } from 'react-router-dom'
 import Signup from './Components/Signup.jsx';
 import Login from './Components/Login.jsx';
+import AddProduct from './Components/AddProduct.jsx';
 
 
 
@@ -17,7 +18,7 @@ const App = () => {
       <Routes>
         <Route path='/' element={<Signup />} />
         <Route path='/login' element={<Login />} />
-
+        <Route path='/AddProduct' element={<AddProduct />} />
       </Routes>
     </div>
   )
